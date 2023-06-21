@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Navbar section */
+
+.navbar_hide {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.navbar_show {
+    transform: translateX(0%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.half_opacity {
+    opacity: 0.5;
+    transition: opacity 0.4s ease-in-out;
+}
+.full_opacity {
+    opacity: 1;
+    transition: opacity 0.4s ease-in-out;
+}
+
+
+/* For WebKit-based browsers */
+::-webkit-scrollbar {
+    width: 0em;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+  
+  /* For Firefox and other browsers */
+  body {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+  
+/* Canvas styling */
+#game_canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+}
