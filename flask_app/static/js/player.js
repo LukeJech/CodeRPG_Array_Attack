@@ -16,29 +16,37 @@ class Player {
     combat_choice_attack() {
         battle_buttons_div.classList.add('hidden');
         attack_div.classList.remove('hidden');
+        index_num.innerText = Math.floor(Math.random() * 6)
         choice_a.innerText = '[' + this.create_random_array() + ']';
         choice_b.innerText = '[' + this.create_random_array() + ']';
         choice_c.innerText = '[' + this.create_random_array() + ']';
     }
 
-    attack_enemy(enemy_hp, array_choice) {
-        let index = 0
+    attack_enemy(enemy, array_choice) {
         let array_a = JSON.parse(choice_a.innerText);
         let array_b = JSON.parse(choice_b.innerText);
         let array_c = JSON.parse(choice_c.innerText);
         if (array_choice == 'a') {
-            enemy_hp -= array_a[index]
-            console.log(enemy_hp)
+            if (array_a[index_num.innerText]) {
+                enemy.hp -= array_a[index_num.innerText]
+            } else {
+                wrong_index.innerText = 'Index out of bounds, you lose your turn!'
+            }
         }
         if (array_choice == 'b') {
-            enemy_hp -= array_b[index]
-            console.log(enemy_hp)
+            if (array_b[index_num.innerText]) {
+                enemy.hp -= array_b[index_num.innerText]
+            } else {
+                wrong_index.innerText = 'Index out of bounds, you lose your turn!'
+            }
         }
         if (array_choice == 'c') {
-            enemy_hp -= array_c[index]
-            console.log(enemy_hp)
+            if (array_c[index_num.innerText]) {
+                enemy.hp -= array_c[index_num.innerText]
+            } else {
+                wrong_index.innerText = 'Index out of bounds, you lose your turn!'
+            }
         }
-        return enemy_hp
     }
 
     create_random_array() {

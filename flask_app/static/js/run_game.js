@@ -14,20 +14,20 @@ window.addEventListener('load', function() {
 
     const player = new Player({name: 'Luke'}, ctx)
     player.drawPlayerImage()
-
+    const enemy = new Enemy(ctx)
+    enemy.drawEnemyImage()
 
 
     function draw_all_game_objects(){
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
         player.drawPlayerImage()
-        ctx.drawImage(enemyImage, 1200, 520, enemyImage.width * 0.6, enemyImage.height * 0.6);
-        ctx.fillText(`${enemy_hp}hp`, 1245, 725);
+        enemy.drawEnemyImage()
     }
     
     start_button.onclick = () => {
-        start_screen_div.classList.add('hidden')
         draw_all_game_objects()
+        start_screen_div.classList.add('hidden')
       };
     
     attack_button.onclick = () => {
@@ -35,15 +35,15 @@ window.addEventListener('load', function() {
     };
 
     a_button.onclick = () => {
-        player.attack_enemy(enemy_hp, "a")
+        player.attack_enemy(enemy, "a")
         draw_all_game_objects()
     }
     b_button.onclick = () => {
-        player.attack_enemy(enemy_hp, "b")
+        player.attack_enemy(enemy, "b")
         draw_all_game_objects()
     }
     c_button.onclick = () => {
-        player.attack_enemy(enemy_hp, "c")
+        player.attack_enemy(enemy, "c")
         draw_all_game_objects()
     }
 
