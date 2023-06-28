@@ -7,6 +7,28 @@ class Player {
         this.image.src = player_data.imageSource
     }
 
+    player_turn() {
+        return new Promise((resolve) => {
+          attack_button.onclick = () => {
+            player.combat_choice_attack();
+          };
+      
+          a_button.onclick = () => {
+            player.attack_enemy(enemy, "a");
+            resolve();
+          };
+      
+          b_button.onclick = () => {
+            player.attack_enemy(enemy, "b");
+            resolve();
+          };
+      
+          c_button.onclick = () => {
+            player.attack_enemy(enemy, "c");
+            resolve();
+          };
+        });
+      }
 
     combat_choice_attack() {
         battle_buttons_div.classList.add('hidden');
