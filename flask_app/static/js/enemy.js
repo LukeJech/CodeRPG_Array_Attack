@@ -7,4 +7,3 @@ class Enemy {
 
 }
 
-const enemy = new Enemy("static/images/enemies/skeleton_idle_0.png")

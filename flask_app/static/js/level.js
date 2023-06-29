@@ -19,6 +19,26 @@ class Level {
         this.ctx.drawImage(enemy.image, 1200, 520, enemy.image.width * 0.6, enemy.image.height * 0.6);
         this.ctx.fillText(`${enemy.hp}hp`, 1245, 725);
     }
+
+    attack_animate(dmg, character) {    
+      this.ctx.fillStyle = 'red';
+      this.ctx.font = '48px Poppins';
+      if(character == 'enemy'){
+          this.ctx.fillText(`-${dmg}`, 1245, 475);
+      }
+      if(character == 'player'){
+          this.ctx.fillText(`-${dmg}`, 545, 475);
+      }
+      this.ctx.fillStyle = 'white';
+      this.ctx.font = '24px Poppins';
+    
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          // Delay for half a second (500 milliseconds)
+          resolve();
+        }, 800);
+      });
+    }
 }
 
 const level = new Level();

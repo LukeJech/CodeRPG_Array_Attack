@@ -7,36 +7,44 @@ class Player {
         this.image.src = player_data.imageSource
     }
 
-    player_turn() {
+    player_turn(enemy) {
         return new Promise((resolve) => {
           attack_button.onclick = () => {
             player.combat_choice_attack();
           };
       
-          a_button.onclick = () => {
-            player.attack_enemy(enemy, "a");
+          a_button.onclick = async () => {
+            let dmg = player.attack_enemy(enemy, "a");
+            if(dmg >= 0){await level.attack_animate(dmg,'enemy')}
             resolve();
           };
       
-          b_button.onclick = () => {
-            player.attack_enemy(enemy, "b");
+          b_button.onclick = async () => {
+            let dmg = player.attack_enemy(enemy, "b");
+            if(dmg >= 0){await level.attack_animate(dmg, 'enemy')}
             resolve();
           };
       
-          c_button.onclick = () => {
-            player.attack_enemy(enemy, "c");
+          c_button.onclick = async () => {
+            let dmg = player.attack_enemy(enemy, "c");
+            if(dmg >= 0){await level.attack_animate(dmg, 'enemy')}
             resolve();
           };
         });
       }
 
     combat_choice_attack() {
+        wrong_index.classList.add('hidden');
         battle_buttons_div.classList.add('hidden');
         attack_div.classList.remove('hidden');
-        index_num.innerText = Math.floor(Math.random() * 6)
-        choice_a.innerText = '[' + this.create_random_array() + ']';
-        choice_b.innerText = '[' + this.create_random_array() + ']';
-        choice_c.innerText = '[' + this.create_random_array() + ']';
+        let array_a = this.create_random_array()
+        let array_b = this.create_random_array()
+        let array_c = this.create_random_array()
+        let index_max = this.calculate_max_index(array_a, array_b, array_c)
+        index_num.innerText = Math.floor(Math.random() * index_max)
+        choice_a.innerText = `[${array_a}]`;
+        choice_b.innerText = `[${array_b}]`;
+        choice_c.innerText = `[${array_c}]`;
     }
 
     attack_enemy(enemy, array_choice) {
@@ -44,24 +52,27 @@ class Player {
         let array_b = JSON.parse(choice_b.innerText);
         let array_c = JSON.parse(choice_c.innerText);
         if (array_choice == 'a') {
-            if (array_a[index_num.innerText]) {
+            if (array_a[index_num.innerText] >= 0) {
                 enemy.hp -= array_a[index_num.innerText]
+                return array_a[index_num.innerText]
             } else {
-                wrong_index.innerText = 'Index out of range, you lose your turn!'
+                wrong_index.classList.remove('hidden');
             }
         }
         if (array_choice == 'b') {
-            if (array_b[index_num.innerText]) {
+            if (array_b[index_num.innerText] >= 0) {
                 enemy.hp -= array_b[index_num.innerText]
+                return array_b[index_num.innerText]
             } else {
-                wrong_index.innerText = 'Index out of range, you lose your turn!'
+                wrong_index.classList.remove('hidden');
             }
         }
         if (array_choice == 'c') {
-            if (array_c[index_num.innerText]) {
+            if (array_c[index_num.innerText] >= 0) {
                 enemy.hp -= array_c[index_num.innerText]
+                return array_c[index_num.innerText]
             } else {
-                wrong_index.innerText = 'Index out of range, you lose your turn!'
+                wrong_index.classList.remove('hidden');
             }
         }
     }
@@ -74,6 +85,17 @@ class Player {
         }
         return random_array
     }
+
+    calculate_max_index(array_a, array_b, array_c) {
+        return Math.max(array_a.length, array_b.length, array_c.length) -1;
+    }
+
+    reset_turn() {
+        battle_buttons_div.classList.remove('hidden');
+        attack_div.classList.add('hidden');
+    }
+
+
 }
 
 const player = new Player(
