@@ -66,6 +66,13 @@
 
                 <button id="start_button" class="p-1 hover:border-2 text-xs md:text-sm lg:text-xl absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2">Start</button>
             </div>
+            <div id="win_screen_div" class="hidden absolute top-0 left-0 w-screen h-screen bg-green-700 z-10">
+                <div class="w-1/5 mx-auto flex flex-col mt-40">
+                    <p class="text-center font-bold text-4xl mb-8">You win!</p>
+                    <button id="continue_button" class="p-1 hover:border-2 text-xs md:text-sm lg:text-xl ">Continue Run</button>
+                    <button id="quit_button" class="p-1 hover:border-2 text-xs md:text-sm lg:text-xl ">Quit & Cash Out</button>
+                </div>
+            </div>
             <canvas id="game_canvas"></canvas>
             <!-- Battle decisions -->
             <div class="bg-blue-900 border-2 border-b-0 w-1/2 h-1/4 rounded-md absolute bottom-[-5px] left-1/2 transform -translate-x-1/2">

@@ -22,7 +22,7 @@ class Level {
 
     attack_animate(dmg, character) {    
       this.ctx.fillStyle = 'red';
-      this.ctx.font = '48px Poppins';
+      this.ctx.font = 'bold 48px Poppins';
       if(character == 'enemy'){
           this.ctx.fillText(`-${dmg}`, 1245, 475);
       }
