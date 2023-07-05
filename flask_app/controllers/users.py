@@ -1,15 +1,19 @@
 from flask_app import app
 from flask import render_template, redirect, request, session
-from flask_app.models import user, cheese # import entire file, rather than class, to avoid circular imports
+from flask_app.models import code_game, user # import entire file, rather than class, to avoid circular imports
 
 # Create Users Controller
-
+@app.route('/', methods=['GET', 'POST'])
+def login_register():
+    if request.method == 'GET':
+        return render_template('login_reg.html', reg_form_input = session.get('user_registration_input', ''))
+    return 'POST'
 
 
 # Read Users Controller
 
-@app.route('/')
-def index():
+@app.route('/game')
+def play_game():
     return render_template('gameplay.html')
 
 

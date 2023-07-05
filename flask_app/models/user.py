@@ -9,11 +9,10 @@ bcrypt = Bcrypt(app)
 
 
 class User:
-    db = "" #which database are you using for this project
+    db = "coderpg_db" #which database are you using for this project
     def __init__(self, data):
         self.id = data['id']
-        self.first_name = data['first_name']
-        self.last_name = data['last_name']
+        self.username = data['username']
         self.email = data['email']
         self.password = data['password']
         self.created_at = data['created_at']

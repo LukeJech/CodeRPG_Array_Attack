@@ -4,6 +4,7 @@ window.addEventListener('load', function() {
     const enemy = new Enemy("static/images/enemies/skeleton_idle_0.png")
     
     start_button.onclick = () => {
+      player.hp = 100
       run_battle();
       };
 
@@ -12,7 +13,6 @@ window.addEventListener('load', function() {
       };
 
       const run_battle = async () => {
-        player.hp = 100
         enemy.hp = 100
         level.draw_all_game_objects(player,enemy)
           start_screen_div.classList.add('hidden');
