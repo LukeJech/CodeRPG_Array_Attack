@@ -1,0 +1,31 @@
+Description -
+
+Main portion is a simple browser based games where the attacks are based on the index of a list/array they have to choose from. Idea is to help teach coding and display my abilities to teach / work in EdTech. Basics of game is already built in JS, rest of project built in Flask.
+
+Users will be able to create an account and keep track of their stats.
+
+One to many relationship will come from users also being able to post their favorite code games. Users will be able to see games posted, edit and delete the ones they've posted. Many to many relationship for users to like other people's posts.
+
+
+Stack - Python/Flask
+
+Github - 
+https://github.com/LukeJech/CodeRPG_Array_Attack
+
+Features -
+CodeRPG Gameplay 
+    Roguelite Dungeon Runs
+    Kill stats 
+    Gold 
+    Xp & Levels
+Coding Games Page
+    Users submit other coding games (validations)
+    CRUD on coding games
+    Users can like coding games
+Login and registration 
+    Flask and AJAX valdiations
+
+Bonus Features if Time
+    Store
+    Friends list and seeing friend's stats
+    Deploy on AWS
