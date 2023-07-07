@@ -13,3 +13,13 @@ function navbar_translate() {
 }
 
 
+const change_login_reg = () => {
+    if(user_login.classList.contains('hidden')) {
+        user_login.classList.remove('hidden')
+        user_register.classList.add('hidden')
+    } else{
+        user_login.classList.add('hidden')
+        user_register.classList.remove('hidden')
+    }
+}
+

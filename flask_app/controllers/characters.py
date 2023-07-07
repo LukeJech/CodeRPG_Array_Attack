@@ -2,35 +2,25 @@ from flask_app import app
 from flask import render_template, redirect, request, session
 from flask_app.models import code_game, user, character # import entire file, rather than class, to avoid circular imports
 
-# Create Users Controller
-@app.route('/', methods=['POST', 'GET'])
-def user_login_registration():
-    if request.method == 'GET': return render_template('login_reg.html', login_email = '', registration_info = '')
-    if request.form['which_form'] == 'registration_form':
-        user_id = user.User.create_user(request.form)
-        if user_id:
-            character.Character.create_character(user_id)
-            return redirect('/game')
-        return render_template('login_reg.html', registration_info = request.form['email'])
-    if user.User.validate_login(request.form): return redirect('/game')
-    return render_template('login_reg.html', login_email = request.form['email'], registration_info = '')
+# Create Characters Controller
 
+# Read Characters Controller
 
-# Read Users Controller
-
-
-
-# Update Users Controller
-
-
-
-# Delete Users Controller
-
-# Logout
-@app.route('/logout')
-def user_logout():
-    session.clear()
+@app.route('/game')
+def play_game():
+    if 'user_id' in session: return render_template('gameplay.html')
     return redirect('/')
+
+
+# Update Characters Controller
+@app.route('/game/endrun/<int:xp>/<int:gold>')
+def end_game_run(xp, gold):
+    character.Character.update_character(xp, gold)
+    return redirect('/game')
+
+
+# Delete Characters Controller
+
 
 # Notes:
 # 1 - Use meaningful names

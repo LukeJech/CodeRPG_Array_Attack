@@ -29,3 +29,17 @@ Bonus Features if Time
     Store
     Friends list and seeing friend's stats
     Deploy on AWS
+
+
+Todo
+- Profile Page
+- About Page
+- Learn Page
+- Code Game Page
+- Code Game CRUD
+- Landscape mode CSS
+
+Bonus Todo
+- User Friends
+- XP Leaderboard
+- Shop

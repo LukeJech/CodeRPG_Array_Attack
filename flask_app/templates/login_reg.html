@@ -4,101 +4,76 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Users</title>
+    <title>CodeRPG</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div id="wrapper" >
-        <!-- Navbar -->
-        <nav class="sticky top-0 z-10 w-full bg-stone-700 py-2 px-40 text-stone-200 shadow-lg">
-            <div class="px-6 flex justify-between items-center">
-                <!-- Navigation links -->
-                <h1 class="text-2xl font-bold">TV Shows!</h1>
-                
-                <ul class=" flex text-lg font-semibold">
-                    <li>
-                        <a class="block transition duration-250 ease-in-out hover:text-yellow-400 py-2 px-4" href="/shows">TV Shows</a>
-                    </li>
-                    <li>
-                        <a class="block transition duration-250 ease-in-out hover:text-yellow-400 py-2 px-4" href="/user/login">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <!-- Main Content -->
-        <div class="w-2/3 mx-auto mt-12">
-            <form action="/user/register" method="post" class="w-2/5 mx-auto  bg-stone-800 rounded-lg shadow text-white px-8 py-4 space-y-4">
-                <div id="registration_errors">
+<body class="bg-stone-950 text-stone-100 ">
+    <div id="main_content" class="w-3/5 mx-auto mt-4">
+            <!-- Register and Login, switch with JS -->
+            <div id="login_reg_form_div" class="bg-stone-900 p-10 rounded-md w-2/5 mx-auto mt-60">
+                <!-- Login -->
+                <div id="user_login">
+                    <h1 class="text-white  text-center font-semibold md:text-2xl lg:text-4xl">Code RPG</h1>
+                    <div class="flex justify-center items-center my-2">
+                        <img class="w-8" src="{{ url_for('static', filename='images/favicon.png') }}">
+                        <h1 class="text-white text-center mx-2 md:text-sm lg:text-md">Log in to play!</h1>
+                        <img class="w-8" src="{{ url_for('static', filename='images/favicon.png') }}">
+                    </div>
                     {% with messages = get_flashed_messages() %} 
-                        {% if messages %}
-                            <p class="text-md text-red-400">Registration Error:</p>   
-                            {% for message in messages %}          
-                                <p class="italic text-sm">{{message}}</p>                
+                        {% if messages %}  
+                            <p class="text-sm text-red-400 font-semibold">Log In Error:</p>
+                            {% for message in messages %}      
+                                <p class="italic text-sm text-red-400">{{message}}</p>              
                             {% endfor %}
                         {% endif %}
                     {% endwith %}
+                    <form action="/" method="post" id="login_form" class="text-gray-700 space-y-10">
+                        <input type="hidden" name="which_form" value="login_form">
+                        <label class="mb-4" for="email"></label>
+                        <input type="email" name="email" placeholder="Email" value="{{login_email}}" class="block w-full mx-auto border-b-2 border-gray-400 outline-none p-2">
+                        <label for="password"></label>
+                        <input type="password" name="password" placeholder="Password" class="block w-full mx-auto border-b-2 border-gray-400 outline-none p-2">
+                        <button type="submit" class="w-full rounded-full text-white text-sm bg-blue-800 hover:bg-blue-700 py-2 mt-4">Log In</button>
+                    </form>
+                    <p class="mt-12 text-sm text-center">Need an account? Click <span class="text-blue-400 hover:text-blue-300 cursor-pointer" onclick="change_login_reg()">here</span></p>
                 </div>
-                <h2 class="text-xl font-bold leading-tight tracking-tight">Register an Account</h2>
-                <div>
-                    <label for="first_name" class="block mb-2 font-medium text-gray-50">First Name</label>
-                    <input type="text" name="first_name" id="first_name" placeholder="Michael" value="{{reg_form_input.first_name}}" class="bg-gray-50  text-gray-900 rounded-lg px-2 py-1 w-full outline-none" required>
-                </div>
-                <div>
-                    <label for="last_name" class="block mb-2 font-medium text-gray-50">Last Name</label>
-                    <input type="text" name="last_name" id="last_name" placeholder="Scotch" value="{{reg_form_input.last_name}}"  class="bg-gray-50   text-gray-900 rounded-lg px-2 py-1 w-full outline-none" required>
-                </div>
-                <div>
-                    <label for="email" class="block mb-2 font-medium text-gray-50">Email</label>
-                    <input type="email" name="email" id="email" placeholder="somethin@site.com" value="{{reg_form_input.email}}"  class="bg-gray-50  text-gray-900 rounded-lg px-2 py-1 w-full outline-none" required>
-                </div>
-                <div>
-                    <label for="password" class="block mb-2 font-medium text-gray-50">Password</label>
-                    <input type="password" name="password" id="password" placeholder="********" class="bg-gray-50 text-gray-900 rounded-lg px-2 py-1 w-full outline-none" required>
-                </div>
-                <div>
-                    <label for="confirm_password" class="block mb-2 font-medium text-gray-50">Confirm Password</label>
-                    <input type="password" name="confirm_password" id="confirm_password" placeholder="********" class="bg-gray-50 text-gray-900 rounded-lg px-2 py-1 w-full outline-none required">
-                </div>
-                <button type="submit"class="rounded border-2 border-neutral-50 px-10 pb-[10px] pt-[12px] text-sm text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500">REGISTER</button>
-
-                <p class="font-light text-gray-300 italic">
-                    Already have an account? <a href="/user/login" class="font-medium text-indigo-300">Login here</a>
-                </p>
-            </form>
-
-            <form action="/user/login" method="post" class="w-2/5 mx-auto  bg-stone-800 rounded-lg shadow text-white px-8 py-4 space-y-4">
-                <div id="registration_errors">
-                    {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
-                        {% if messages %}
-                            <p class="text-md text-red-400">Login Error:</p>                            <!-- check if there are any messages -->
-                            {% for message in messages %}            <!-- loop through the messages -->
-                                <p class="italic text-sm">{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                <!-- Register -->
+                <div id="user_register" class="hidden">
+                    <h1 class="text-white  text-center font-semibold md:text-2xl lg:text-4xl">Code RPG</h1>
+                    <div class="flex justify-center items-center my-2">
+                        <img class="w-8" src="{{ url_for('static', filename='images/favicon.png') }}">
+                        <h1 class="text-white text-center mx-2 md:text-sm lg:text-md">Register to start playing!</h1>
+                        <img class="w-8" src="{{ url_for('static', filename='images/favicon.png') }}">
+                    </div>
+                    {% with messages = get_flashed_messages() %} 
+                        {% if messages %}  
+                            <p class="text-sm text-red-400 font-semibold">Registration Error:</p>
+                            {% for message in messages %}      
+                                <p class="italic text-sm text-red-400">{{message}}</p>              
                             {% endfor %}
-                            <p class="text-sm mt-2">Or register <a href="/user/register" class="text-blue-400">here</a></p>
                         {% endif %}
                     {% endwith %}
+                    <form action="/" method="post" id="registration_form" class="text-gray-700 space-y-10">
+                        <input type="hidden" name="which_form" value="registration_form">
+                        <label class="mb-4" for="username"></label>
+                        <input type="text" name="username" placeholder="Username" class="block w-full mx-auto border-b-2 border-gray-400 outline-none p-2">
+                        <label class="mb-4" for="email"></label>
+                        <input type="email" name="email" placeholder="Email" class="block w-full mx-auto border-b-2 border-gray-400 outline-none p-2">
+                        <label for="password"></label>
+                        <input type="password" name="password" placeholder="Password" class="block w-full mx-auto border-b-2 border-gray-400 outline-none p-2">
+                        <label for="confirm_password"></label>
+                        <input type="password" name="confirm_password" placeholder="Confirm Password" class="block w-full mx-auto border-b-2 border-gray-400 outline-none p-2">
+                        <button type="submit" class="w-full rounded-full text-white text-sm bg-blue-800 hover:bg-blue-700 py-2 mt-4">Register</button>
+                    </form>
+                    <p class="mt-12 text-sm text-center">Have an account? Click <span class="text-blue-400 hover:text-blue-300 cursor-pointer" onclick="change_login_reg()">here</span></p>
                 </div>
-                <h2 class="text-xl font-bold leading-tight tracking-tight">Sign In</h2>
-                <div>
-                    <label for="email" class="block mb-2 font-medium text-gray-50">Email</label>
-                    <input type="email" name="email" id="email" placeholder="somethin@site.com" class="bg-gray-50 border border-indigo-900  text-gray-900 rounded-lg px-2 py-1 w-full outline-none">
-                </div>
-                <div>
-                    <label for="password" class="block mb-2 font-medium text-gray-50">Password</label>
-                    <input type="password" name="password" id="password" placeholder="********" class="bg-gray-50 border border-indigo-900  text-gray-900 rounded-lg px-2 py-1 w-full outline-none">
-                </div>
-                <button type="submit"class="rounded border-2 border-neutral-50 px-10 pb-[10px] pt-[12px] text-sm text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10">Login</button>
-
-                <p class="font-light text-gray-300 italic">
-                    Need an account? <a href="/user/register" class="font-medium text-indigo-300">Register here</a>
-                </p>
-            </form>
-        </div>
+        
     </div>
 </body>
 </html>

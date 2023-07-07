@@ -47,6 +47,15 @@
                         <p class="py-2 ml-2">About</p>
                     </a>
                 </li>
+                <li class="hover:bg-stone-800 w-full text-center">
+                    <a href="/logout" class="w-full flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="ml-6 bi bi-door-closed" viewBox="0 0 16 16">
+                            <path d="M3 2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v13h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V2zm1 13h8V2H4v13z"/>
+                            <path d="M9 9a1 1 0 1 0 2 0 1 1 0 0 0-2 0z"/>
+                          </svg>
+                        <p class="py-2 ml-2">Logout</p>
+                    </a>
+                </li>
     
             </ul>
         </div>
@@ -66,10 +75,13 @@
                 <button id="start_button" class="p-1 hover:border-2 text-xs md:text-sm lg:text-xl absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2">Start</button>
             </div>
             <div id="win_screen_div" class="hidden absolute top-0 left-0 w-screen h-screen bg-green-700 z-10">
-                <div class="w-1/5 mx-auto flex flex-col mt-40">
+                <div id="win_screen_choices" class="w-1/5 mx-auto flex flex-col mt-40">
                     <p class="text-center font-bold text-4xl mb-8">You win!</p>
-                    <button id="continue_button" class="p-1 hover:border-2 text-xs md:text-sm lg:text-xl ">Continue Run</button>
-                    <button id="quit_button" class="p-1 hover:border-2 text-xs md:text-sm lg:text-xl ">Quit & Cash Out</button>
+                    <p id="run_gold" class="text-center font-semibold text-xl mb-4"></p>
+                    <p id="run_xp" class="text-center font-semibold text-xl mb-4"></p>
+                    <p id="run_bonus" class="text-center font-semibold text-xl mb-4"></p>
+                    <button id="continue_button" class="p-1 hover:border-2 text-xs md:text-sm lg:text-xl ">Risk It & Continue Run</button>
+                    <button id="quit_button" onclick="end_run()" class="p-1 hover:border-2 text-xs md:text-sm lg:text-xl ">Quit & Cash Out</button>
                 </div>
             </div>
             <canvas id="game_canvas"></canvas>
