@@ -19,7 +19,9 @@ def user_login_registration():
 # Read Users Controller
 @app.route('/user/profile/<int:user_id>')
 def show_user_profile(user_id):
-    if 'user_id' in session: return render_template('profile.html')
+    if 'user_id' in session: 
+        return render_template('profile.html', user_info = user.User.get_user_by_id_with_character(user_id))
+    return redirect('/')
 
 
 # Update Users Controller

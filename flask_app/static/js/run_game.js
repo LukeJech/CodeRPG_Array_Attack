@@ -1,6 +1,7 @@
 
 let gold = 0
 let xp = 0
+let kills = 0
 
 window.addEventListener('load', function() {
     const enemy = new Enemy("static/images/enemies/skeleton_idle_0.png")
@@ -28,6 +29,7 @@ window.addEventListener('load', function() {
               console.log('you won')
               gold += Math.ceil(Math.random() * 8) + earning_multiplier
               xp += Math.ceil(Math.random() * 8) + earning_multiplier
+              kills ++ 
               earning_multiplier++
               run_gold.innerText = `Run Gold: ${gold}`
               run_xp.innerText = `Run XP: ${xp}`
@@ -51,8 +53,8 @@ window.addEventListener('load', function() {
 })
 
 const end_run = () =>{
-  end_game_run(gold,xp)
+  end_game_run(gold,xp, kills)
 }
-const end_game_run = (gold,xp) => {
-  window.location.href = `/game/endrun/${xp}/${gold}`;
+const end_game_run = (gold,xp, kills) => {
+  window.location.href = `/game/endrun/${xp}/${gold}/${kills}`;
 }

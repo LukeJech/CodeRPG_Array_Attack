@@ -13,9 +13,9 @@ def play_game():
 
 
 # Update Characters Controller
-@app.route('/game/endrun/<int:xp>/<int:gold>')
-def end_game_run(xp, gold):
-    character.Character.update_character(xp, gold)
+@app.route('/game/endrun/<int:xp>/<int:gold>/<int:kills>')
+def end_game_run(xp, gold, kills):
+    character.Character.update_character(xp, gold, kills)
     return redirect('/game')
 
 

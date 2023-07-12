@@ -3,6 +3,7 @@ from flask_app import app
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash, session
 import re
+from flask_app.models import character
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 # The above is used when we do login registration, be sure to install flask-bcrypt: pipenv install flask-bcrypt
@@ -19,6 +20,7 @@ class User:
         self.updated_at = data['updated_at']
         # What changes need to be made above for this project?
         #What needs to be added her for class association?
+        self.character = None
 
 
 
@@ -56,6 +58,19 @@ class User:
             return cls(users_list[0])
         return False
 
+    @classmethod
+    def get_user_by_id_with_character(cls, user_id):
+        query = """
+        SELECT * from users
+        JOIN characters
+        ON users.id = characters.user_id
+        WHERE users.id = %(user_id)s
+        ;"""
+        result = connectToMySQL(cls.db).query_db(query,{'user_id':user_id})
+        this_user = cls(result[0])
+        this_user.character = character.Character(result[0])
+        this_user.character.level = character.Character.calculate_level(this_user.character)
+        return this_user
 
 
     # Update Users Models

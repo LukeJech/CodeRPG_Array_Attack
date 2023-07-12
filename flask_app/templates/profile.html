@@ -58,15 +58,41 @@
         <!-- Side navbar logo and navbar button section -->
         <div id="navbar_logo_section" class="absolute top-0 left-0 flex items-center space-x-2 z-30">
             <img src="{{ url_for('static', filename='images/codeRPGLogo.png') }}" class="w-8">
-            <p>CodeRPG</p>
+            <h1>CodeRPG</h1>
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list  rounded-md hover:bg-stone-700" viewBox="0 0 16 16" onclick="navbar_translate()">
                 <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
             </svg>
         </div>
     </div>
     <!-- Profile Content -->
-    <div class="absolute top-0 left-0 w-full h-full overflow-hidden bg-cover bg-no-repeat p-12 text-center" style="background-image: url('{{ url_for('static', filename='images/code_background.jpg') }}'); ">
+    <div id="profile_bg" class="absolute  top-0 left-40 w-full h-full overflow-hidden bg-contain bg-no-repeat  text-center" style="background-image: url('{{ url_for('static', filename='images/level_bg/treasure_bg.png') }}');">
+            <div class="speech left flex flex-col justify-start">
+                <h2 class="text-left font-semibold sm:text-xl md:text-2xl lg:text-4xl mb-4">{{user_info.username}}</h2>
+                <div class="flex justify-start">
+                    <div class="w-1/2 p_left">
+                        <p>Total Kills - <span>{{user_info.character.kills}}</span></p>
+                        <p>Gold - <span>{{user_info.character.gold}}</span></p>
+                        <p>Email - <span>{{user_info.email}}</span></p>
+                    </div>
+                    <div class="w-1/2 p_left ">
+                        <p>XP - <span>{{user_info.character.xp}}</span></p>
+                        <p>Level - <span>{{user_info.character.level}}</span></p>
+                        <div class="flex justify-start flex-wrap">
+                            <a href="">Change Username</a> 
+                            <p class="mx-2">|</p>
+                            <a href="">Password</a>
+                        </div>
+                    </div>
+                    <div>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="flex flex-col">
+                    </div>
+                </div>
+            </div>
     </div>
+    
 </body>
 </html>
 
