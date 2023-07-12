@@ -17,7 +17,9 @@ def user_login_registration():
 
 
 # Read Users Controller
-
+@app.route('/user/profile/<int:user_id>')
+def show_user_profile(user_id):
+    if 'user_id' in session: return render_template('profile.html')
 
 
 # Update Users Controller
