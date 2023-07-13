@@ -11,6 +11,14 @@
   margin-bottom: .5rem;
 }
 
+.slim_border {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.hover_head:hover h3 {
+  text-decoration: underline;
+}
+
 /* Smartphone */
 @media (max-width: 767px) {
   .p_left p,

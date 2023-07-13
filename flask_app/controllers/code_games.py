@@ -2,20 +2,24 @@ from flask_app import app
 from flask import render_template, redirect, request, session
 from flask_app.models import code_game, user # import entire file, rather than class, to avoid circular imports
 
-# Create Cheeses Controller
+# Create Code Games Controller
+@app.route('/code_games/new')
+def create_code_game():
+    return render_template('new_code_game.html')
+
+
+# Read Code Games Controller
+@app.route('/code_games')
+def show_code_games():
+    return render_template('show_code_games.html')
 
 
 
-# Read Cheeses Controller
+# Update Code Games Controller
 
 
 
-
-# Update Cheeses Controller
-
-
-
-# Delete Cheeses Controller
+# Delete Code Games Controller
 
 
 # Notes:

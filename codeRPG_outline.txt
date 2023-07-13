@@ -32,7 +32,6 @@ Bonus Features if Time
 
 
 Todo
-- Profile Page
 - About Page
 - Learn Page
 - Code Game Page

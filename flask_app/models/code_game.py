@@ -8,7 +8,7 @@ bcrypt = Bcrypt(app)
 # The above is used when we do login registration, be sure to install flask-bcrypt: pipenv install flask-bcrypt
 
 
-class Cheese:
+class CodeGame:
     db = "" #which database are you using for this project
     def __init__(self, data):
         self.id = data['id']
@@ -20,16 +20,16 @@ class Cheese:
 
 
 
-    # Create Cheeses Models
+    # Create Code Games Models
 
 
 
-    # Read Cheeses Models
+    # Read Code Games Models
 
 
 
-    # Update Cheeses Models
+    # Update Code Games Models
 
 
 
-    # Delete Cheeses Models
+    # Delete Code Games Models
