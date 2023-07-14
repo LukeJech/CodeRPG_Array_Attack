@@ -20,13 +20,19 @@ class Level {
         this.ctx.fillText(`${enemy.hp}hp`, 1245, 725);
     }
 
-    attack_animate(dmg, character) {    
+    attack_animate(dmg, character, player,enemy ) {    
       this.ctx.fillStyle = 'red';
       this.ctx.font = 'bold 48px Poppins';
       if(character == 'enemy'){
+          this.ctx.drawImage(player.attack_image, 398, 400, player.image.width * 0.4, player.image.height * 0.4);
+          arrow_audio.volume = .25
+          arrow_audio.play()
           this.ctx.fillText(`-${dmg}`, 1245, 475);
       }
       if(character == 'player'){
+          this.ctx.drawImage(enemy.attack_image, 1200, 520, enemy.image.width * 0.6, enemy.image.height * 0.6);
+          slurp_audio.volume = .25
+          slurp_audio.play()
           this.ctx.fillText(`-${dmg}`, 545, 475);
       }
       this.ctx.fillStyle = 'white';

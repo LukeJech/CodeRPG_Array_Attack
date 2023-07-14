@@ -4,7 +4,9 @@ class Player {
         this.hp = 100;
         this.image = new Image();
         this.name = player_data.name;
-        this.image.src = player_data.imageSource
+        this.image.src = player_data.imageSource;
+        this.attack_image = new Image();
+        this.attack_image.src = player_data.attackImage;
     }
 
     player_turn(enemy) {
@@ -15,19 +17,19 @@ class Player {
       
           a_button.onclick = async () => {
             let dmg = player.attack_enemy(enemy, "a");
-            if(dmg >= 0){await level.attack_animate(dmg,'enemy')}
+            if(dmg >= 0){await level.attack_animate(dmg,'enemy', this)}
             resolve();
           };
       
           b_button.onclick = async () => {
             let dmg = player.attack_enemy(enemy, "b");
-            if(dmg >= 0){await level.attack_animate(dmg, 'enemy')}
+            if(dmg >= 0){await level.attack_animate(dmg, 'enemy', this)}
             resolve();
           };
       
           c_button.onclick = async () => {
             let dmg = player.attack_enemy(enemy, "c");
-            if(dmg >= 0){await level.attack_animate(dmg, 'enemy')}
+            if(dmg >= 0){await level.attack_animate(dmg, 'enemy', this)}
             resolve();
           };
         });
@@ -101,4 +103,5 @@ class Player {
 const player = new Player(
     {name: 'Luke',
     imageSource: "static/images/player/elf_female_idle1.png",
+    attackImage: "static/images/player/elf_female_shooting2.png",
 })

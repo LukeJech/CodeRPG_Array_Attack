@@ -4,7 +4,7 @@ let xp = 0
 let kills = 0
 
 window.addEventListener('load', function() {
-    const enemy = new Enemy("static/images/enemies/skeleton_idle_0.png")
+    const enemy = new Enemy("static/images/enemies/skeleton_idle_0.png", "static/images/enemies/skeleton_attack_17.png")
     let earning_multiplier = 0
     start_button.onclick = () => {
       player.hp = 100
@@ -16,7 +16,7 @@ window.addEventListener('load', function() {
       };
 
       const run_battle = async () => {
-        enemy.hp = 1
+        enemy.hp = 10
         level.draw_all_game_objects(player,enemy)
           start_screen_div.classList.add('hidden');
           win_screen_div.classList.add('hidden');
@@ -37,7 +37,7 @@ window.addEventListener('load', function() {
               break
             }
             let dmg = Math.ceil(Math.random() * 9)
-            await level.attack_animate(dmg, 'player')
+            await level.attack_animate(dmg, 'player', player, enemy)
             player.hp -= dmg
             player.reset_turn()
             if(player.hp <= 0) {
