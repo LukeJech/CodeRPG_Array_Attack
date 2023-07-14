@@ -35,11 +35,10 @@ Todo
 - About Page
 - Learn Page
 - Code Game Likes
-- Code Game Validations
-- Landscape mode CSS
 - Attack annimation and sound
 
 Bonus Todo
+- Ajax validations
 - User Friends
 - XP Leaderboard
 - Shop

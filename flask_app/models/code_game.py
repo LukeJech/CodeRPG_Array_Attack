@@ -27,6 +27,8 @@ class CodeGame:
     # Create Code Games Models
     @classmethod
     def create_code_game(cls, data):
+        if not CodeGame.validate_code_game_form(data):
+            return False
         data = data.copy()
         data['user_id'] = session['user_id']
         query = """
@@ -71,12 +73,16 @@ class CodeGame:
     # Update Code Games Models
     @classmethod
     def update_code_game(cls, data):
+        if not CodeGame.validate_code_game_form(data):
+            return False
         query = """
         UPDATE code_games
         SET name = %(name)s, site = %(site)s, language = %(language)s, description = %(description)s
         WHERE id = %(code_game_id)s
         ;"""
-        return connectToMySQL(cls.db).query_db(query, data)
+        connectToMySQL(cls.db).query_db(query, data)
+        return True
+    
 
 
     # Delete Code Games Models
@@ -89,3 +95,20 @@ class CodeGame:
         WHERE id = %(code_game_id)s
         ;"""
         return connectToMySQL(cls.db).query_db(query, {'code_game_id': code_game_id})
+    
+    #Validate Code Data
+    @staticmethod
+    def validate_code_game_form(data):
+        print(data)
+        url_pattern = "^https?:\\/\\/(?:www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b(?:[-a-zA-Z0-9()@:%_\\+.~#?&\\/=]*)$"
+        is_valid = True
+        if len(data['name']) < 3 or len(data['description']) < 3:
+            flash("Field must be more than 2 characters.")
+            is_valid = False
+        if not re.match(url_pattern, data['site']):
+            flash("Not a valid website format")
+            is_valid = False
+        if 'language' not in data:
+            flash('Please select a language')
+            is_valid = False
+        return is_valid

@@ -8,8 +8,8 @@ def create_code_game():
     if 'user_id' not in session: return redirect('/')
     if request.method == 'GET':
         return render_template('new_code_game.html')
-    code_game.CodeGame.create_code_game(request.form)
-    return redirect('/code_games')
+    if code_game.CodeGame.create_code_game(request.form): return redirect('/code_games')
+    return render_template('new_code_game.html')
 
 
 # Read Code Games Controller
@@ -26,8 +26,8 @@ def update_code_game(code_game_id):
     if 'user_id' not in session: return redirect('/')
     if request.method == 'GET' and session['user_id'] == code_game.CodeGame.get_code_game_users_id(code_game_id):
         return render_template('edit_code_game.html', this_code_game = code_game.CodeGame.get_code_game_by_id(code_game_id))
-    code_game.CodeGame.update_code_game(request.form)
-    return redirect('/code_games')
+    if code_game.CodeGame.update_code_game(request.form): return redirect('/code_games')
+    return render_template('edit_code_game.html', this_code_game = code_game.CodeGame.get_code_game_by_id(code_game_id))
 
 
 

@@ -19,6 +19,22 @@
   text-decoration: underline;
 }
 
+/* Check if game is in portait mode */
+@media (orientation: portrait) {
+  #portrait_mode {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #44403c;
+    z-index: 50;
+    visibility: visible;
+  }
+}
+
+/* absolute top-0 left-0 w-screen h-screen bg-stone-700 z-10 */
+
 /* Smartphone */
 @media (max-width: 767px) {
   .p_left p,
