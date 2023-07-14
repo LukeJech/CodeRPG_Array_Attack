@@ -3,24 +3,40 @@ from flask import render_template, redirect, request, session
 from flask_app.models import code_game, user # import entire file, rather than class, to avoid circular imports
 
 # Create Code Games Controller
-@app.route('/code_games/new')
+@app.route('/code_games/new', methods=['POST', 'GET'])
 def create_code_game():
-    return render_template('new_code_game.html')
+    if 'user_id' not in session: return redirect('/')
+    if request.method == 'GET':
+        return render_template('new_code_game.html')
+    code_game.CodeGame.create_code_game(request.form)
+    return redirect('/code_games')
 
 
 # Read Code Games Controller
 @app.route('/code_games')
 def show_code_games():
-    return render_template('show_code_games.html')
+    if 'user_id' not in session: return redirect('/')
+    return render_template('show_code_games.html', code_games = code_game.CodeGame.get_all_code_games())
 
 
 
 # Update Code Games Controller
+@app.route('/code_games/edit/<int:code_game_id>', methods=['POST','GET'])
+def update_code_game(code_game_id):
+    if 'user_id' not in session: return redirect('/')
+    if request.method == 'GET' and session['user_id'] == code_game.CodeGame.get_code_game_users_id(code_game_id):
+        return render_template('edit_code_game.html', this_code_game = code_game.CodeGame.get_code_game_by_id(code_game_id))
+    code_game.CodeGame.update_code_game(request.form)
+    return redirect('/code_games')
 
 
 
 # Delete Code Games Controller
-
+@app.route('/code_games/delete/<int:code_game_id>')
+def delete_code_game(code_game_id):
+    if 'user_id' not in session: return redirect('/')
+    code_game.CodeGame.delete_code_game(code_game_id)
+    return redirect('/code_games')
 
 # Notes:
 # 1 - Use meaningful names

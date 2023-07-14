@@ -34,9 +34,10 @@ Bonus Features if Time
 Todo
 - About Page
 - Learn Page
-- Code Game Page
-- Code Game CRUD
+- Code Game Likes
+- Code Game Validations
 - Landscape mode CSS
+- Attack annimation and sound
 
 Bonus Todo
 - User Friends
