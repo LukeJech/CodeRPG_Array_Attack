@@ -21,6 +21,8 @@ class CodeGame:
         self.updated_at = data['updated_at']
         # What changes need to be made above for this project?
         #What needs to be added her for class association?
+        self.like_count = data['like_count']
+        self.current_user_likes = False
 
 
 
@@ -40,16 +42,31 @@ class CodeGame:
 
     # Read Code Games Models
     @classmethod
-    def get_all_code_games(cls):
+    def get_all_code_games_with_likes(cls):
         query = """
-        SELECT * FROM code_games
+        SELECT *,
+        (
+        SELECT COUNT(game_likes.code_game_id) FROM game_likes
+        WHERE code_games.id = game_likes.code_game_id 
+        ) AS like_count
+        FROM code_games
+        JOIN game_likes
+        ON game_likes.code_game_id = code_games.id
+        ORDER BY like_count DESC
         ;"""
         db_rows = connectToMySQL(cls.db).query_db(query)
         all_code_games = []
+        last_code_game_id = 0
         for row in db_rows:
-            all_code_games.append(cls(row))
+            if last_code_game_id != row['id']:
+                this_code_game = cls(row)
+                last_code_game_id = this_code_game.id
+                all_code_games.append(cls(row))
+            if row['game_likes.user_id'] == session['user_id']:
+                all_code_games[-1].current_user_likes = True
         return all_code_games
     
+
     @classmethod
     def get_code_game_by_id(cls, code_game_id ):
         query = """

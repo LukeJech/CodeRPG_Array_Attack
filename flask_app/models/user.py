@@ -42,7 +42,17 @@ class User:
         session['username'] = user_data['username']
         return user_id
     
-
+    @classmethod
+    def create_code_game_like(cls, code_game_id):
+        data = {
+            'code_game_id':code_game_id,
+            'user_id': session['user_id']
+        }
+        query = """
+        INSERT INTO game_likes (user_id, code_game_id)
+        VALUES (%(user_id)s, %(code_game_id)s)
+        ;"""
+        return connectToMySQL(cls.db).query_db(query, data)
 
 
     # Read Users Models
@@ -78,6 +88,17 @@ class User:
 
 
     # Delete Users Models
+    @classmethod
+    def delete_code_game_like(cls, code_game_id):
+        data = {
+            'code_game_id':code_game_id,
+            'user_id': session['user_id']
+        }
+        query = """
+        DELETE FROM game_likes
+        WHERE user_id = %(user_id)s and code_game_id = %(code_game_id)s
+        ;"""
+        return connectToMySQL(cls.db).query_db(query, data)
 
     #Validations
     @staticmethod

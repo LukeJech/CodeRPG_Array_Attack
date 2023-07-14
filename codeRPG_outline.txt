@@ -34,11 +34,11 @@ Bonus Features if Time
 Todo
 - About Page
 - Learn Page
-- Code Game Likes
 - Attack annimation and sound
 
 Bonus Todo
 - Ajax validations
+- Select code game by dropdown language
 - User Friends
 - XP Leaderboard
 - Shop

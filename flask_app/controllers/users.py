@@ -15,6 +15,11 @@ def user_login_registration():
     if user.User.validate_login(request.form): return redirect('/game')
     return render_template('login_reg.html', login_email = request.form['email'], registration_info = '')
 
+@app.route('/user/like/code_game/<int:code_game_id>')
+def user_likes_code_game(code_game_id):
+    user.User.create_code_game_like(code_game_id)
+    return redirect('/code_games')
+
 
 # Read Users Controller
 @app.route('/user/profile/<int:user_id>')
@@ -29,6 +34,10 @@ def show_user_profile(user_id):
 
 
 # Delete Users Controller
+@app.route('/user/unlike/code_game/<int:code_game_id>')
+def user_unlikes_code_game(code_game_id):
+    user.User.delete_code_game_like(code_game_id)
+    return redirect('/code_games')
 
 # Logout
 @app.route('/logout')

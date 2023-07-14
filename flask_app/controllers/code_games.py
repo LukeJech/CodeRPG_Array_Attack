@@ -16,7 +16,7 @@ def create_code_game():
 @app.route('/code_games')
 def show_code_games():
     if 'user_id' not in session: return redirect('/')
-    return render_template('show_code_games.html', code_games = code_game.CodeGame.get_all_code_games())
+    return render_template('show_code_games.html', code_games = code_game.CodeGame.get_all_code_games_with_likes())
 
 
 
