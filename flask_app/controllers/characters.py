@@ -16,7 +16,7 @@ def play_game():
 @app.route('/game/endrun/<int:xp>/<int:gold>/<int:kills>')
 def end_game_run(xp, gold, kills):
     character.Character.update_character(xp, gold, kills)
-    return redirect('/game')
+    return redirect(f"/user/profile/{session['user_id']}")
 
 
 # Delete Characters Controller

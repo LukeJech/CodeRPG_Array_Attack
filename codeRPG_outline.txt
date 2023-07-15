@@ -32,7 +32,6 @@ Bonus Features if Time
 
 
 Todo
-- Learn Page video
 
 Bonus Todo
 - Ajax validations

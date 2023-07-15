@@ -2,6 +2,7 @@
 let gold = 0
 let xp = 0
 let kills = 0
+let enenmy_bonus_hp = 0
 
 window.addEventListener('load', function() {
     const enemy = new Enemy("static/images/enemies/skeleton_idle_0.png", "static/images/enemies/skeleton_attack_17.png")
@@ -16,7 +17,7 @@ window.addEventListener('load', function() {
       };
 
       const run_battle = async () => {
-        enemy.hp = 10
+        enemy.hp = 10 + enenmy_bonus_hp
         level.draw_all_game_objects(player,enemy)
           start_screen_div.classList.add('hidden');
           win_screen_div.classList.add('hidden');
@@ -25,11 +26,12 @@ window.addEventListener('load', function() {
             await player.player_turn(enemy);
             level.draw_all_game_objects(player, enemy);
             if(enemy.hp <= 0) {
+              // Player defeats enemy
               win_screen_div.classList.remove('hidden');
-              console.log('you won')
               gold += Math.ceil(Math.random() * 8) + earning_multiplier
               xp += Math.ceil(Math.random() * 8) + earning_multiplier
               kills ++ 
+              enenmy_bonus_hp += 10
               earning_multiplier++
               run_gold.innerText = `Run Gold: ${gold}`
               run_xp.innerText = `Run XP: ${xp}`
@@ -41,8 +43,8 @@ window.addEventListener('load', function() {
             player.hp -= dmg
             player.reset_turn()
             if(player.hp <= 0) {
+              // Player Loses
               start_screen_div.classList.remove('hidden');
-              console.log('you lost')
               break
             }
             level.draw_all_game_objects(player, enemy);

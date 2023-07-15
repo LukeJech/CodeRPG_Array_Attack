@@ -17,6 +17,7 @@ def user_login_registration():
 
 @app.route('/user/like/code_game/<int:code_game_id>')
 def user_likes_code_game(code_game_id):
+    if 'user_id' not in session: return redirect('/')
     user.User.create_code_game_like(code_game_id)
     return redirect('/code_games')
 
@@ -24,9 +25,9 @@ def user_likes_code_game(code_game_id):
 # Read Users Controller
 @app.route('/user/profile/<int:user_id>')
 def show_user_profile(user_id):
-    if 'user_id' in session: 
-        return render_template('profile.html', user_info = user.User.get_user_by_id_with_character(user_id))
-    return redirect('/')
+    if 'user_id' not in session: return redirect('/')
+    return render_template('profile.html', user_info = user.User.get_user_by_id_with_character(user_id))
+
 
 @app.route('/about')
 def show_about_page():
@@ -44,6 +45,7 @@ def show_learn_page():
 # Delete Users Controller
 @app.route('/user/unlike/code_game/<int:code_game_id>')
 def user_unlikes_code_game(code_game_id):
+    if 'user_id' not in session: return redirect('/')
     user.User.delete_code_game_like(code_game_id)
     return redirect('/code_games')
 
