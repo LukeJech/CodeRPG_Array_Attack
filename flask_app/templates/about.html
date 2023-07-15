@@ -82,40 +82,24 @@
             
         </div>
         <!-- Main Content -->
-        <div class="w-1/2 pl-60 mt-10">
-            <h2 class="text-4xl font-semibold mb-2">Coding Games</h2>
-            <p class="text-lg italic mb-2 ">Post a new game!</p>
-                {% with messages = get_flashed_messages() %} 
-                    {% if messages %}  
-                        <p class="text-sm text-red-400 font-semibold">Post Error:</p>
-                        <div class="mb-2">
-                            {% for message in messages %} 
-                                        
-                                <p class="italic text-sm text-red-400">{{message}}</p>              
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                {% endwith %}
-            <form method="post" action="/code_games/new" class="border-2 border-stone-300 rounded-md py-2 px-4 flex flex-col space-y-2 text-stone-100">
-                <label for="name"></label>
-                <input type="text" name="name" id="name" placeholder="Game Name" class="bg-stone-600 w-3/4 p-1 outline-none">
-                <label for="description"></label>
-                <textarea name="description" id="description" cols="30" rows="10" placeholder="Description" class="bg-stone-600 p-1 outline-none"></textarea>
-                <div >
-                    <label for="site_link"></label>
-                    <input type="text" name="site" id="site_link" placeholder="Site Link" class="bg-stone-600 p-1 outline-none w-3/5">
-                    <select name="language" id="" class="bg-stone-600 p-1 mb-2 outline-none">
-                        <option value="CSS">CSS</option>
-                        <option value="HTML">HTML</option>
-                        <option value="Javascript">Javascript</option>
-                        <option value="Java">Java</option>
-                        <option value="MySQL">MySQL</option>
-                        <option value="Other">Other</option>
-                        <option value="Python">Python</option>
-                    </select>
-                    <button type="submit"class="rounded border-2 border-stone-500 px-10 py-1 ml-2 font-medium uppercase text-stone-100  hover:border-stone-400 hover:bg-green-800">Post</button>
+        <div class="w-1/2 mt-20 mx-auto">
+            <div class="flex justify-between">
+                <div>
+                    <h2 class="text-2xl font-semibold mb-2">About CodeRPG</h2>
+                    <p>Before becoming a developer, I was a youth pastor for 9 years at my local church. During that time I developed a passion for teaching difficult concepts through fun. I've also been a gamer almost since birth, playing the Sega Genesis at the age of 3. Weaving together both gaming and learning is one of my favorite things to do.  </p>
+                    <p class="mt-4">During my bootcamp at Coding Dojo, I was introduced to a few games that helped me learn coding concepts such as Flexbox Froggy and Flexbox Zombies. I took inspiration from these games and had the idea to teach people other  coding concepts through a browser based video game. The current CodeRPG version teaches indexes of arrays but in the future I also hope to teach other concepts through the game as well.</p>
+                    <p class="mt-4">My goal is to continue to work on this game and also get a job in EdTech / Gamified Learning.</p>
                 </div>
-            </form>
+                <img class="w-1/3 ml-12" src="{{ url_for('static', filename='images/luke_jech.png') }}" alt="">
+            </div>
+            <h2 class="text-xl font-semibold mt-8 mb-2">Contact</h2>
+            <div>
+                <p>Email - LukeJech@gmail.com</p>
+                <a href="https://www.youtube.com/channel/UCvLaYpF4LFHUzKEdH212HLw" target="_blank" class="block hover:text-blue-500">Coding Youtube</a>
+                <a href="https://www.linkedin.com/in/luke-jech/" target="_blank" class="block hover:text-blue-500">My LinkedIn</a>
+                <a href="https://github.com/LukeJech" target="_blank" class="block hover:text-blue-500">My Github</a>
+                <a href="https://twitter.com/LukeJech" target="_blank" class="hover:text-blue-500">My Twitter</a>
+            </div>
         </div>
     </div>
     

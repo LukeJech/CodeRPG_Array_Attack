@@ -50,7 +50,7 @@ class CodeGame:
         WHERE code_games.id = game_likes.code_game_id 
         ) AS like_count
         FROM code_games
-        JOIN game_likes
+        LEFT JOIN game_likes
         ON game_likes.code_game_id = code_games.id
         ORDER BY like_count DESC
         ;"""

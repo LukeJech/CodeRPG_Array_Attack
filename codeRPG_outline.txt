@@ -32,9 +32,7 @@ Bonus Features if Time
 
 
 Todo
-- About Page
-- Learn Page
-- Attack annimation and sound
+- Learn Page video
 
 Bonus Todo
 - Ajax validations

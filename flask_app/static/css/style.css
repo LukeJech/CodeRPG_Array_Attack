@@ -146,3 +146,12 @@
   left: -2.4vw; top: 50%;
   margin-top: -3vw;
 }
+
+/* For sticky image while scrolling */
+.sticky-image-right {
+  position: fixed;
+        top: 50%; /* Adjust the top position as needed */
+        right: 0;
+        transform: translate(-30%, -60%);
+}
+

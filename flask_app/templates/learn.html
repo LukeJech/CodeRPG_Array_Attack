@@ -15,9 +15,9 @@
 </head>
 <body class="bg-stone-800 text-stone-100 ">
     <div id="wrapper" class="flex">
-        <div id="navbar_wrapper" class=" w-40 h-screen">
+        <div id="navbar_wrapper" class=" w-40">
             <!-- Side navbar section -->
-            <div id="navbar" class="bg-stone-900 w-full h-full">
+            <div id="navbar" class="bg-stone-900 w-full h-full sticky">
                 <ul class="flex flex-col pt-2 items-center ">
                     <!-- Side navbar logo and navbar button section -->
                 <div id="navbar_logo_section" class=" flex items-center space-x-2 z-30">
@@ -82,40 +82,30 @@
             
         </div>
         <!-- Main Content -->
-        <div class="w-1/2 pl-60 mt-10">
-            <h2 class="text-4xl font-semibold mb-2">Coding Games</h2>
-            <p class="text-lg italic mb-2 ">Post a new game!</p>
-                {% with messages = get_flashed_messages() %} 
-                    {% if messages %}  
-                        <p class="text-sm text-red-400 font-semibold">Post Error:</p>
-                        <div class="mb-2">
-                            {% for message in messages %} 
-                                        
-                                <p class="italic text-sm text-red-400">{{message}}</p>              
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                {% endwith %}
-            <form method="post" action="/code_games/new" class="border-2 border-stone-300 rounded-md py-2 px-4 flex flex-col space-y-2 text-stone-100">
-                <label for="name"></label>
-                <input type="text" name="name" id="name" placeholder="Game Name" class="bg-stone-600 w-3/4 p-1 outline-none">
-                <label for="description"></label>
-                <textarea name="description" id="description" cols="30" rows="10" placeholder="Description" class="bg-stone-600 p-1 outline-none"></textarea>
-                <div >
-                    <label for="site_link"></label>
-                    <input type="text" name="site" id="site_link" placeholder="Site Link" class="bg-stone-600 p-1 outline-none w-3/5">
-                    <select name="language" id="" class="bg-stone-600 p-1 mb-2 outline-none">
-                        <option value="CSS">CSS</option>
-                        <option value="HTML">HTML</option>
-                        <option value="Javascript">Javascript</option>
-                        <option value="Java">Java</option>
-                        <option value="MySQL">MySQL</option>
-                        <option value="Other">Other</option>
-                        <option value="Python">Python</option>
-                    </select>
-                    <button type="submit"class="rounded border-2 border-stone-500 px-10 py-1 ml-2 font-medium uppercase text-stone-100  hover:border-stone-400 hover:bg-green-800">Post</button>
-                </div>
-            </form>
+        <div class="w-2/5 mt-20 mx-auto">
+            <h2 class="text-2xl font-semibold mb-42">Understanding Arrays/Lists</h2>
+            <a href="#video_lesson" class="text-blue-500 italic text-sm">Skip the reading and head straight to the video lesson!</a>
+            <p class="mb-4 mt-6">In programming, we can set variables equal to a number, string of words, and more.</p>
+            <p class="mb-6">However, we can also set a variable to be equal to a group of things. This is where Arrays, called Lists in Python, are very useful!</p>
+
+            <p class="mb-4 text-lg font-semibold">Video Game Inventory Example</p>
+            <p class="mb-6">Imagine creating an inventory for your player and having to do it like this...</p>
+            <p>inventory_item1 = 'sword'  </p>
+            <p>inventory_item2 = 'potion'</p>
+            <p class="mb-6">inventory_item3 = 'ax of jave'</p>
+            <p class="mb-6">This of course is very tedious and instead we should use one variable as an array for the whole inventory...</p>
+            <p class="mb-6">inventory = ['sword', 'potion', 'ax of jave']</p>
+            <p class="mb-4">Now we can access any item in our inventory using what are called indexes.</p>
+            <p class="mb-6">An index is simply a number representing the position of our array. Only instead of our array starting with an index of 1, it starts with an index of 0. Let's say we want to access our sword...</p>
+            <p class="ml-6">Indexes = <span class="ml-4">0</span>  <span class="ml-14">1</span> <span class="ml-14">2</span></p>
+            <p class="mb-6">inventory = ['sword', 'potion', 'ax of jave']</p>
+            <p class="mb-4">We can access the sword by using array syntax which uses square brackets [] with the index number inside.</p>
+            <p>inventory[0] would equal our string of 'sword'.</p>
+            <p class="mb-4">inventory[1] would equal our string of 'potion'.</p>
+            <p class="mb-6">Hopefully you can guess what inventory[2] would equal...</p>
+            <p class="mb-4 text-lg font-semibold">Practie Practice Practice!</p>
+            <p class="mb-6">Now that you understand indexes, start playing CodeRPG to practice or watch the video below for more explination!</p>
+            <iframe id="video_lesson" class="mx-auto mb-8 " width="560" height="315" src="https://www.youtube.com/embed/oigfaZ5ApsM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
     </div>
     

@@ -28,6 +28,14 @@ def show_user_profile(user_id):
         return render_template('profile.html', user_info = user.User.get_user_by_id_with_character(user_id))
     return redirect('/')
 
+@app.route('/about')
+def show_about_page():
+    return render_template('about.html')
+
+@app.route('/learn')
+def show_learn_page():
+    return render_template('learn.html')
+
 
 # Update Users Controller
 
