@@ -9,6 +9,8 @@ window.addEventListener('load', function() {
     let earning_multiplier = 0
     start_button.onclick = () => {
       player.hp = 100
+      battle_music.volume = .1;
+      battle_music.play();
       run_battle();
       };
 
@@ -45,6 +47,7 @@ window.addEventListener('load', function() {
             if(player.hp <= 0) {
               // Player Loses
               start_screen_div.classList.remove('hidden');
+              enenmy_bonus_hp = 0
               break
             }
             level.draw_all_game_objects(player, enemy);

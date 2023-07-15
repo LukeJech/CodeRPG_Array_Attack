@@ -39,3 +39,55 @@ Bonus Todo
 - User Friends
 - XP Leaderboard
 - Shop
+
+Presentation 
+1. Idea/Vision
+    - To create a browser based coding game that helps people learn about arrays
+2. Goals & Growth
+    - JS Game Dev with OOP 
+    - Practie DOM manipulation
+    - CSS Tailwind - Sidebar Navigation 
+    - HTML Canvas
+    - Python - More complex SQL database
+3. The Game
+    - Show off a round
+    - html
+    - run_game file
+    - level file
+    - enemy file
+    - player file
+    - saving gold + xp to database
+4. Profile
+    - User registration, login, validations, session
+    - Profile page route through session and jinja
+    - User + Character stats join query
+    - Display through Jinja
+5. Learn Page
+    - Short lesson + Video
+6. Games Page
+    - Show database
+    - Full CRUD
+    - Many to Many with users to like
+    - Show how I check if user likes a game or not 
+    - Ordered by most liked game
+7. About Page
+    -Simple explination of why I did the game and contact info
+8. Logout
+9. Security 
+    - Protected Routes
+    - prevent MySQL injection
+    - Avoided InnerHTML
+    - Validations on backend
+    - Bcrypt hased and salted passwords
+10. Growth
+    - Managing Scope and timelines
+    - OOP
+    - Javascript skills
+11. Refactoring and Future Features
+    - Change to React + HTML Canvas
+    - Update CSS styling
+    - Ajax validations
+    - Select code game by dropdown language
+    - User Friends
+    - XP Leaderboard
+    - Shop
