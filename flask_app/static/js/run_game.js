@@ -3,10 +3,13 @@ let gold = 0
 let xp = 0
 let kills = 0
 let enenmy_bonus_hp = 0
+let earning_multiplier = 0
 
+// when browser fully loads page
 window.addEventListener('load', function() {
     const enemy = new Enemy("static/images/enemies/skeleton_idle_0.png", "static/images/enemies/skeleton_attack_17.png")
-    let earning_multiplier = 0
+
+    // Game begins once start or continue button is clicked
     start_button.onclick = () => {
       player.hp = 100
       battle_music.volume = .1;
@@ -18,8 +21,11 @@ window.addEventListener('load', function() {
       run_battle();
       };
 
+
       const run_battle = async () => {
+        // enemy hp increases each round
         enemy.hp = 10 + enenmy_bonus_hp
+
         level.draw_all_game_objects(player,enemy)
           start_screen_div.classList.add('hidden');
           win_screen_div.classList.add('hidden');

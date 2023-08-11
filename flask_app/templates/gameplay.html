@@ -79,57 +79,16 @@
     </div>
     
     <!-- Check for portait screen ratio -->
-    <div id="portrait_mode" class="invisible pt-96">
-        <div class="w-1/2 mx-auto">
-            <p class="text-center text-xl font-semibold mb-4">Please rotate your screen for a better gameplay experience</p>
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="mx-auto bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
-              </svg>
-        </div>
-    </div>
+    {% include "portrait_mode.html" %}
     <!-- Gameplay Canvas section -->
     <div class="absolute top-0 left-0">
         <div class="relative">
-            <div id="start_screen_div" class="absolute top-0 left-0 w-screen h-screen bg-stone-700 z-10">
-                <button id="start_button" class="p-1 hover:border-2 text-xs md:text-sm lg:text-xl absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2">Start</button>
-            </div>
-            <div id="win_screen_div" class="hidden absolute top-0 left-0 w-screen h-screen bg-green-700 z-10">
-                <div id="win_screen_choices" class="w-1/5 mx-auto flex flex-col mt-40">
-                    <p class="text-center font-bold text-4xl mb-8">You win!</p>
-                    <p id="run_gold" class="text-center font-semibold text-xl mb-4"></p>
-                    <p id="run_xp" class="text-center font-semibold text-xl mb-4"></p>
-                    <p id="run_bonus" class="text-center font-semibold text-xl mb-4"></p>
-                    <button id="continue_button" class="p-1 hover:border-2 text-xs md:text-sm lg:text-xl ">Risk It & Continue Run</button>
-                    <button id="quit_button" onclick="end_run()" class="p-1 hover:border-2 text-xs md:text-sm lg:text-xl ">Quit & Cash Out</button>
-                </div>
-            </div>
+            
+            {% include "start_screen.html" %}
+            {% include "win_screen.html" %}
             <canvas id="game_canvas"></canvas>
             <!-- Battle decisions -->
-            <div id="game_dialog_div" class="bg-blue-900 border-2 border-b-0 w-1/2 h-1/4 rounded-md absolute bottom-[-5px] left-1/2 transform -translate-x-1/2">
-                <div id="battle_buttons_div">
-                    <button id="attack_button" class="p-1 hover:border-2 text-xs md:text-sm lg:text-xl absolute left-1/4 top-1/4 transform -translate-y-1/2 -translate-x-1/2">Attack</button>
-                    <button id="heal_button" class="p-1 hover:border-2 text-xs md:text-sm lg:text-xl absolute right-1/4 top-1/4 transform -translate-y-1/2 -translate-x-1/2">Heal</button>
-                </div>
-                <p id="wrong_index" class="hidden px-2 text-center mt-4 bg-red-600 border-2 absolute left-1/2 top-1/2 transform -translate-y-1/2 -translate-x-1/2">Index out of range, you lose your turn!</p>
-                <div id="attack_div" class="hidden">
-                    <p class="text-xs md:text-sm lg:text-lg text-center pt-2">Index is <span id="index_num"></span>, which will you choose?</p>
-                    <div class="flex justify-between px-20 mt-2">
-                        <div class="flex flex-col">
-                            <button id="a_button" class="hover:border-2 text-xs md:text-sm lg:text-xl">A</button>
-                            <p id="choice_a" class="text-xs md:text-sm lg:text-lg"></p>
-                        </div>
-                        <div class="flex flex-col">
-                            <button id="b_button" class="hover:border-2 text-xs md:text-sm lg:text-xl">B</button>
-                            <p id="choice_b" class="text-xs md:text-sm lg:text-lg"></p>
-                        </div>
-                        <div class="flex flex-col">
-                            <button id="c_button" class="hover:border-2 text-xs md:text-sm lg:text-xl">C</button>
-                            <p id="choice_c" class="text-xs md:text-sm lg:text-lg"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% include "battle.html"%}
         </div>
     </div>
     <!-- Audio -->

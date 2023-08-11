@@ -57,6 +57,7 @@ Presentation
     - enemy file
     - player file
     - saving gold + xp to database
+    - Gameplay screen size responsive 
 4. Profile
     - User registration, login, validations, session
     - Profile page route through session and jinja
