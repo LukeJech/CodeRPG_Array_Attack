@@ -12,12 +12,14 @@ class Level {
         this.backgroundImage.src = "static/images/level_bg/mushroom_forest.png";
     }
     draw_all_game_objects(player, enemy){
+      let enemy_x = 1200
+      let enemy_y = 520
         this.ctx.clearRect(0, 0, this.width, this.height);
         this.ctx.drawImage(this.backgroundImage, 0, 0, this.width, this.height);
         this.ctx.drawImage(player.image, 400, 400, player.image.width * 0.4, player.image.height * 0.4);
         this.ctx.fillText(`${player.hp}hp`, 545, 725);
-        this.ctx.drawImage(enemy.image, 1200, 520, enemy.image.width * 0.6, enemy.image.height * 0.6);
-        this.ctx.fillText(`${enemy.hp}hp`, 1245, 725);
+        this.ctx.drawImage(enemy.image, enemy_x, enemy_y, enemy.image.width * 0.6, enemy.image.height * 0.6);
+        this.ctx.fillText(`${enemy.hp}hp`, (enemy_x + 100), (enemy_y + 250));
     }
 
     attack_animate(dmg, character, player,enemy ) {    

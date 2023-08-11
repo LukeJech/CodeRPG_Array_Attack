@@ -1,14 +1,15 @@
-
+import { randomEnemy } from './enemies.js';
 let gold = 0
 let xp = 0
 let kills = 0
 let enenmy_bonus_hp = 0
 let earning_multiplier = 0
 
+
 // when browser fully loads page
 window.addEventListener('load', function() {
-    const enemy = new Enemy("static/images/enemies/skeleton_idle_0.png", "static/images/enemies/skeleton_attack_17.png")
-
+    let enemy_random = randomEnemy()
+    let enemy = new Enemy(`static/images/enemies/${enemy_random}_idle.png`, `static/images/enemies/${enemy_random}_attack.png`)
     // Game begins once start or continue button is clicked
     start_button.onclick = () => {
       player.hp = 100
@@ -18,6 +19,9 @@ window.addEventListener('load', function() {
       };
 
     continue_button.onclick = () => {
+      let enemy_random = randomEnemy()
+      enemy.image.src = `static/images/enemies/${enemy_random}_idle.png`
+      enemy.attack_image.src = `static/images/enemies/${enemy_random}_attack.png`
       run_battle();
       };
 
