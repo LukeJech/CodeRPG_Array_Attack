@@ -7,10 +7,13 @@
     <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}" type="image/png">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/level.js') }}" defer></script>
+    <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/level.js') }}" defer></script>
     <script type="module" src="{{ url_for('static', filename='js/run_game.js') }}" defer></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/player.js') }}" defer></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/enemy.js') }}" defer></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/enemy.js') }}" defer></script> -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/Overworld.js') }}" defer></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/init.js') }}" defer></script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <title>CodeRPG</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,16 +26,16 @@
     <!-- Check for portait screen ratio -->
     {% include "portrait_mode.html" %}
     <!-- Gameplay Canvas section -->
-    <div class="absolute top-0 left-0">
-        <div class="relative">
+    <div class="absolute top-0 left-0 w-full h-screen">
+        <div class="relative" id="game_container">
             
-            {% include "start_screen.html" %}
-            {% include "win_screen.html" %}
+            <!-- {% include "start_screen.html" %}
+            {% include "win_screen.html" %} -->
 
             <canvas id="game_canvas"></canvas>
-            
+
             <!-- Battle decisions -->
-            {% include "battle.html"%}
+            <!-- {% include "battle.html"%} -->
         </div>
     </div>
     <!-- Audio -->
