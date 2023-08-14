@@ -15,21 +15,30 @@ class Overworld {
         };
         image.src = "static/images/level_bg/mushroom_forest.png";
 
-        const x = 300;
-        const y = 400;
+        // place game object
+        const player = new GameObject({
+            x:300,
+            y:400, 
+            width: .4,
+            height: .4,
+        })
 
-        const shadow = new Image();
-        shadow.onload = async () => { 
-            await new Promise(resolve => setTimeout(resolve, 20));
-            this.ctx.drawImage(shadow, x, y, shadow.width * .4, shadow.height * .4);
-        };
-        shadow.src = "static/images/player/shadow.png"
+        const enemey = new GameObject({
+            x:1200,
+            y:450,
+            width: .9,
+            height: .9,
+            shadowX: -80,
+            shadowY: -200,
+            shadowW: .6,
+            shadowH: .6,
+            src: "static/images/enemies/bat_idle.png"
+        })
 
-        const player = new Image();
-        player.onload = async () => {
-            await new Promise(resolve => setTimeout(resolve, 10));
-            this.ctx.drawImage(player, x, y, player.width * .4, player.height * .4);
-        };
-        player.src = "static/images/player/elf_female_idle1.png";
+        setTimeout(() => {
+            player.sprite.draw(this.ctx);
+            enemey.sprite.draw(this.ctx);
+
+        }  , 200);
     }
 }
